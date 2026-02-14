@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstv_core.a CMakeFiles/stv_core.dir/src/task.cpp.o CMakeFiles/stv_core.dir/src/cancel_token.cpp.o CMakeFiles/stv_core.dir/src/scheduler.cpp.o CMakeFiles/stv_core.dir/src/pipeline.cpp.o CMakeFiles/stv_core.dir/src/orchestrator.cpp.o
+/usr/bin/ranlib libstv_core.a

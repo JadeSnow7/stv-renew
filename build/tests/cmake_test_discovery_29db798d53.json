@@ -1,0 +1,42 @@
+{
+  "tests": 6,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "Scheduler",
+      "tests": 6,
+      "testsuite": [
+        {
+          "name": "SubmitAndExecute",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 58
+        },
+        {
+          "name": "DependencyChain",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 83
+        },
+        {
+          "name": "PriorityOrdering",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 115
+        },
+        {
+          "name": "FailedTask",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 145
+        },
+        {
+          "name": "CancelBeforeExecution",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 165
+        },
+        {
+          "name": "NoPendingAfterCompletion",
+          "file": "\/Users\/huaodong\/stv_renew\/tests\/test_scheduler.cpp",
+          "line": 185
+        }
+      ]
+    }
+  ]
+}

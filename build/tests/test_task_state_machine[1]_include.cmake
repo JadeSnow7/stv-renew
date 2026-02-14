@@ -1,0 +1,5 @@
+if(EXISTS "/Users/huaodong/stv_renew/build/tests/test_task_state_machine[1]_tests.cmake")
+  include("/Users/huaodong/stv_renew/build/tests/test_task_state_machine[1]_tests.cmake")
+else()
+  add_test(test_task_state_machine_NOT_BUILT test_task_state_machine_NOT_BUILT)
+endif()
