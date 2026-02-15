@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/test_http_client.dir/http_client_test.cpp.o -o test_http_client  ../core/libstv_core.a ../infra/libstv_infra.a ../lib/libgtest_main.a ../core/libstv_core.a ../infra/libstv_infra.a ../_deps/spdlog-build/libspdlogd.a ../lib/libgtest.a 

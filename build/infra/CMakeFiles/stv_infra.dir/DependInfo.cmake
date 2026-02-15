@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/huaodong/stv_renew/infra/src/logger.cpp" "infra/CMakeFiles/stv_infra.dir/src/logger.cpp.o" "gcc" "infra/CMakeFiles/stv_infra.dir/src/logger.cpp.o.d"
+  "/home/snow/stv-renew/infra/src/http_client.cpp" "infra/CMakeFiles/stv_infra.dir/src/http_client.cpp.o" "gcc" "infra/CMakeFiles/stv_infra.dir/src/http_client.cpp.o.d"
+  "/home/snow/stv-renew/infra/src/logger.cpp" "infra/CMakeFiles/stv_infra.dir/src/logger.cpp.o" "gcc" "infra/CMakeFiles/stv_infra.dir/src/logger.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

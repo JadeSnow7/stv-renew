@@ -1,5 +1,5 @@
-if(EXISTS "/Users/huaodong/stv_renew/build/tests/test_scheduler[1]_tests.cmake")
-  include("/Users/huaodong/stv_renew/build/tests/test_scheduler[1]_tests.cmake")
+if(EXISTS "/home/snow/stv-renew/build/tests/test_scheduler[1]_tests.cmake")
+  include("/home/snow/stv-renew/build/tests/test_scheduler[1]_tests.cmake")
 else()
   add_test(test_scheduler_NOT_BUILT test_scheduler_NOT_BUILT)
 endif()

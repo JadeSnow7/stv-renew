@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/huaodong/stv_renew/tests/test_scheduler.cpp" "tests/CMakeFiles/test_scheduler.dir/test_scheduler.cpp.o" "gcc" "tests/CMakeFiles/test_scheduler.dir/test_scheduler.cpp.o.d"
+  "/home/snow/stv-renew/tests/test_scheduler.cpp" "tests/CMakeFiles/test_scheduler.dir/test_scheduler.cpp.o" "gcc" "tests/CMakeFiles/test_scheduler.dir/test_scheduler.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

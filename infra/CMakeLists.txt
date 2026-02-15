@@ -1,6 +1,7 @@
 # ---- infra module: stv_infra ----
 add_library(stv_infra STATIC
     src/logger.cpp
+    src/http_client.cpp
 )
 
 target_include_directories(stv_infra
@@ -11,6 +12,7 @@ target_include_directories(stv_infra
 target_link_libraries(stv_infra
     PUBLIC
         spdlog::spdlog
+        stv_core
 )
 
 target_compile_features(stv_infra PUBLIC cxx_std_17)

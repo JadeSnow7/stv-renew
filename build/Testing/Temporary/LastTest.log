@@ -1,128 +1,20 @@
-Start testing: Feb 14 01:50 CST
+Start testing: Feb 15 19:12 CST
 ----------------------------------------------------------
-2/36 Testing: TaskStateMachine.ReadyToRunning
-2/36 Test: TaskStateMachine.ReadyToRunning
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.ReadyToRunning" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.ReadyToRunning" start time: Feb 14 01:50 CST
+37/43 Testing: RetryableHttpClientTest.SuccessOnFirstAttempt
+37/43 Test: RetryableHttpClientTest.SuccessOnFirstAttempt
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.SuccessOnFirstAttempt" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.SuccessOnFirstAttempt" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.ReadyToRunning
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.SuccessOnFirstAttempt
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.ReadyToRunning
-[       OK ] TaskStateMachine.ReadyToRunning (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.ReadyToRunning" end time: Feb 14 01:50 CST
-"TaskStateMachine.ReadyToRunning" time elapsed: 00:00:00
-----------------------------------------------------------
-
-4/36 Testing: TaskStateMachine.RunningToFailed
-4/36 Test: TaskStateMachine.RunningToFailed
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.RunningToFailed" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.RunningToFailed" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.RunningToFailed
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.RunningToFailed
-[       OK ] TaskStateMachine.RunningToFailed (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.RunningToFailed" end time: Feb 14 01:50 CST
-"TaskStateMachine.RunningToFailed" time elapsed: 00:00:00
-----------------------------------------------------------
-
-1/36 Testing: TaskStateMachine.QueuedToReady
-1/36 Test: TaskStateMachine.QueuedToReady
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.QueuedToReady" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.QueuedToReady" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.QueuedToReady
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.QueuedToReady
-[       OK ] TaskStateMachine.QueuedToReady (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.QueuedToReady" end time: Feb 14 01:50 CST
-"TaskStateMachine.QueuedToReady" time elapsed: 00:00:00
-----------------------------------------------------------
-
-3/36 Testing: TaskStateMachine.RunningToSucceeded
-3/36 Test: TaskStateMachine.RunningToSucceeded
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.RunningToSucceeded" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.RunningToSucceeded" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.RunningToSucceeded
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.RunningToSucceeded
-[       OK ] TaskStateMachine.RunningToSucceeded (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.RunningToSucceeded" end time: Feb 14 01:50 CST
-"TaskStateMachine.RunningToSucceeded" time elapsed: 00:00:00
-----------------------------------------------------------
-
-5/36 Testing: TaskStateMachine.RunningToPaused
-5/36 Test: TaskStateMachine.RunningToPaused
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.RunningToPaused" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.RunningToPaused" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.RunningToPaused
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.RunningToPaused
-[       OK ] TaskStateMachine.RunningToPaused (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.SuccessOnFirstAttempt
+[       OK ] RetryableHttpClientTest.SuccessOnFirstAttempt (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -131,25 +23,25 @@ Note: Google Test filter = TaskStateMachine.RunningToPaused
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.RunningToPaused" end time: Feb 14 01:50 CST
-"TaskStateMachine.RunningToPaused" time elapsed: 00:00:00
+"RetryableHttpClientTest.SuccessOnFirstAttempt" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.SuccessOnFirstAttempt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-6/36 Testing: TaskStateMachine.PausedToRunning
-6/36 Test: TaskStateMachine.PausedToRunning
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.PausedToRunning" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.PausedToRunning" start time: Feb 14 01:50 CST
+38/43 Testing: RetryableHttpClientTest.SuccessOnSecondAttempt
+38/43 Test: RetryableHttpClientTest.SuccessOnSecondAttempt
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.SuccessOnSecondAttempt" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.SuccessOnSecondAttempt" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.PausedToRunning
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.SuccessOnSecondAttempt
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.PausedToRunning
-[       OK ] TaskStateMachine.PausedToRunning (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.SuccessOnSecondAttempt
+[       OK ] RetryableHttpClientTest.SuccessOnSecondAttempt (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -158,25 +50,25 @@ Note: Google Test filter = TaskStateMachine.PausedToRunning
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.PausedToRunning" end time: Feb 14 01:50 CST
-"TaskStateMachine.PausedToRunning" time elapsed: 00:00:00
+"RetryableHttpClientTest.SuccessOnSecondAttempt" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.SuccessOnSecondAttempt" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-7/36 Testing: TaskStateMachine.RunningToCanceled
-7/36 Test: TaskStateMachine.RunningToCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.RunningToCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.RunningToCanceled" start time: Feb 14 01:50 CST
+39/43 Testing: RetryableHttpClientTest.ExhaustedRetries
+39/43 Test: RetryableHttpClientTest.ExhaustedRetries
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.ExhaustedRetries" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.ExhaustedRetries" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.RunningToCanceled
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.ExhaustedRetries
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.RunningToCanceled
-[       OK ] TaskStateMachine.RunningToCanceled (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.ExhaustedRetries
+[       OK ] RetryableHttpClientTest.ExhaustedRetries (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -185,25 +77,25 @@ Note: Google Test filter = TaskStateMachine.RunningToCanceled
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.RunningToCanceled" end time: Feb 14 01:50 CST
-"TaskStateMachine.RunningToCanceled" time elapsed: 00:00:00
+"RetryableHttpClientTest.ExhaustedRetries" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.ExhaustedRetries" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-8/36 Testing: TaskStateMachine.QueuedToCanceled
-8/36 Test: TaskStateMachine.QueuedToCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.QueuedToCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.QueuedToCanceled" start time: Feb 14 01:50 CST
+40/43 Testing: RetryableHttpClientTest.NonRetryableError
+40/43 Test: RetryableHttpClientTest.NonRetryableError
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.NonRetryableError" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.NonRetryableError" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.QueuedToCanceled
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.NonRetryableError
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.QueuedToCanceled
-[       OK ] TaskStateMachine.QueuedToCanceled (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.NonRetryableError
+[       OK ] RetryableHttpClientTest.NonRetryableError (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -212,25 +104,25 @@ Note: Google Test filter = TaskStateMachine.QueuedToCanceled
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.QueuedToCanceled" end time: Feb 14 01:50 CST
-"TaskStateMachine.QueuedToCanceled" time elapsed: 00:00:00
+"RetryableHttpClientTest.NonRetryableError" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.NonRetryableError" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-9/36 Testing: TaskStateMachine.ReadyToCanceled
-9/36 Test: TaskStateMachine.ReadyToCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.ReadyToCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.ReadyToCanceled" start time: Feb 14 01:50 CST
+41/43 Testing: RetryableHttpClientTest.CanceledDuringBackoff
+41/43 Test: RetryableHttpClientTest.CanceledDuringBackoff
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.CanceledDuringBackoff" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.CanceledDuringBackoff" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.ReadyToCanceled
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.CanceledDuringBackoff
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.ReadyToCanceled
-[       OK ] TaskStateMachine.ReadyToCanceled (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.CanceledDuringBackoff
+[       OK ] RetryableHttpClientTest.CanceledDuringBackoff (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -239,25 +131,25 @@ Note: Google Test filter = TaskStateMachine.ReadyToCanceled
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.ReadyToCanceled" end time: Feb 14 01:50 CST
-"TaskStateMachine.ReadyToCanceled" time elapsed: 00:00:00
+"RetryableHttpClientTest.CanceledDuringBackoff" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.CanceledDuringBackoff" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-10/36 Testing: TaskStateMachine.PausedToCanceled
-10/36 Test: TaskStateMachine.PausedToCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.PausedToCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.PausedToCanceled" start time: Feb 14 01:50 CST
+42/43 Testing: RetryableHttpClientTest.ExponentialBackoff
+42/43 Test: RetryableHttpClientTest.ExponentialBackoff
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.ExponentialBackoff" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.ExponentialBackoff" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.PausedToCanceled
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.ExponentialBackoff
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.PausedToCanceled
-[       OK ] TaskStateMachine.PausedToCanceled (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.ExponentialBackoff
+[       OK ] RetryableHttpClientTest.ExponentialBackoff (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -266,25 +158,25 @@ Note: Google Test filter = TaskStateMachine.PausedToCanceled
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.PausedToCanceled" end time: Feb 14 01:50 CST
-"TaskStateMachine.PausedToCanceled" time elapsed: 00:00:00
+"RetryableHttpClientTest.ExponentialBackoff" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.ExponentialBackoff" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-11/36 Testing: TaskStateMachine.FailedToQueuedRetry
-11/36 Test: TaskStateMachine.FailedToQueuedRetry
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.FailedToQueuedRetry" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.FailedToQueuedRetry" start time: Feb 14 01:50 CST
+43/43 Testing: RetryableHttpClientTest.NullCancelToken
+43/43 Test: RetryableHttpClientTest.NullCancelToken
+Command: "/home/snow/stv-renew/build/tests/test_http_client" "--gtest_filter=RetryableHttpClientTest.NullCancelToken" "--gtest_also_run_disabled_tests"
+Directory: /home/snow/stv-renew/build/tests
+"RetryableHttpClientTest.NullCancelToken" start time: Feb 15 19:12 CST
 Output:
 ----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.FailedToQueuedRetry
+Running main() from /home/snow/stv-renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RetryableHttpClientTest.NullCancelToken
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.FailedToQueuedRetry
-[       OK ] TaskStateMachine.FailedToQueuedRetry (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
+[----------] 1 test from RetryableHttpClientTest
+[ RUN      ] RetryableHttpClientTest.NullCancelToken
+[       OK ] RetryableHttpClientTest.NullCancelToken (0 ms)
+[----------] 1 test from RetryableHttpClientTest (0 ms total)
 
 [----------] Global test environment tear-down
 [==========] 1 test from 1 test suite ran. (0 ms total)
@@ -293,683 +185,8 @@ Note: Google Test filter = TaskStateMachine.FailedToQueuedRetry
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"TaskStateMachine.FailedToQueuedRetry" end time: Feb 14 01:50 CST
-"TaskStateMachine.FailedToQueuedRetry" time elapsed: 00:00:00
+"RetryableHttpClientTest.NullCancelToken" end time: Feb 15 19:12 CST
+"RetryableHttpClientTest.NullCancelToken" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-12/36 Testing: TaskStateMachine.IllegalQueuedToRunning
-12/36 Test: TaskStateMachine.IllegalQueuedToRunning
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalQueuedToRunning" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalQueuedToRunning" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalQueuedToRunning
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalQueuedToRunning
-[       OK ] TaskStateMachine.IllegalQueuedToRunning (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalQueuedToRunning" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalQueuedToRunning" time elapsed: 00:00:00
-----------------------------------------------------------
-
-13/36 Testing: TaskStateMachine.IllegalSucceededToRunning
-13/36 Test: TaskStateMachine.IllegalSucceededToRunning
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalSucceededToRunning" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalSucceededToRunning" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalSucceededToRunning
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalSucceededToRunning
-[       OK ] TaskStateMachine.IllegalSucceededToRunning (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalSucceededToRunning" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalSucceededToRunning" time elapsed: 00:00:00
-----------------------------------------------------------
-
-14/36 Testing: TaskStateMachine.IllegalCanceledToRunning
-14/36 Test: TaskStateMachine.IllegalCanceledToRunning
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalCanceledToRunning" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalCanceledToRunning" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalCanceledToRunning
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalCanceledToRunning
-[       OK ] TaskStateMachine.IllegalCanceledToRunning (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalCanceledToRunning" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalCanceledToRunning" time elapsed: 00:00:00
-----------------------------------------------------------
-
-15/36 Testing: TaskStateMachine.IllegalQueuedToSucceeded
-15/36 Test: TaskStateMachine.IllegalQueuedToSucceeded
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalQueuedToSucceeded" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalQueuedToSucceeded" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalQueuedToSucceeded
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalQueuedToSucceeded
-[       OK ] TaskStateMachine.IllegalQueuedToSucceeded (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalQueuedToSucceeded" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalQueuedToSucceeded" time elapsed: 00:00:00
-----------------------------------------------------------
-
-16/36 Testing: TaskStateMachine.IllegalQueuedToFailed
-16/36 Test: TaskStateMachine.IllegalQueuedToFailed
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalQueuedToFailed" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalQueuedToFailed" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalQueuedToFailed
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalQueuedToFailed
-[       OK ] TaskStateMachine.IllegalQueuedToFailed (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalQueuedToFailed" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalQueuedToFailed" time elapsed: 00:00:00
-----------------------------------------------------------
-
-17/36 Testing: TaskStateMachine.IllegalPausedToSucceeded
-17/36 Test: TaskStateMachine.IllegalPausedToSucceeded
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.IllegalPausedToSucceeded" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.IllegalPausedToSucceeded" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.IllegalPausedToSucceeded
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.IllegalPausedToSucceeded
-[       OK ] TaskStateMachine.IllegalPausedToSucceeded (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.IllegalPausedToSucceeded" end time: Feb 14 01:50 CST
-"TaskStateMachine.IllegalPausedToSucceeded" time elapsed: 00:00:00
-----------------------------------------------------------
-
-18/36 Testing: TaskStateMachine.ProgressClamp
-18/36 Test: TaskStateMachine.ProgressClamp
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.ProgressClamp" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.ProgressClamp" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.ProgressClamp
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.ProgressClamp
-[       OK ] TaskStateMachine.ProgressClamp (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.ProgressClamp" end time: Feb 14 01:50 CST
-"TaskStateMachine.ProgressClamp" time elapsed: 00:00:00
-----------------------------------------------------------
-
-19/36 Testing: TaskStateMachine.ToStringCoverage
-19/36 Test: TaskStateMachine.ToStringCoverage
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=TaskStateMachine.ToStringCoverage" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"TaskStateMachine.ToStringCoverage" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = TaskStateMachine.ToStringCoverage
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from TaskStateMachine
-[ RUN      ] TaskStateMachine.ToStringCoverage
-[       OK ] TaskStateMachine.ToStringCoverage (0 ms)
-[----------] 1 test from TaskStateMachine (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"TaskStateMachine.ToStringCoverage" end time: Feb 14 01:50 CST
-"TaskStateMachine.ToStringCoverage" time elapsed: 00:00:00
-----------------------------------------------------------
-
-20/36 Testing: CancelToken.BasicCancelFlow
-20/36 Test: CancelToken.BasicCancelFlow
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=CancelToken.BasicCancelFlow" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"CancelToken.BasicCancelFlow" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = CancelToken.BasicCancelFlow
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from CancelToken
-[ RUN      ] CancelToken.BasicCancelFlow
-[       OK ] CancelToken.BasicCancelFlow (0 ms)
-[----------] 1 test from CancelToken (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"CancelToken.BasicCancelFlow" end time: Feb 14 01:50 CST
-"CancelToken.BasicCancelFlow" time elapsed: 00:00:00
-----------------------------------------------------------
-
-21/36 Testing: CancelToken.IdempotentCancel
-21/36 Test: CancelToken.IdempotentCancel
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=CancelToken.IdempotentCancel" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"CancelToken.IdempotentCancel" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = CancelToken.IdempotentCancel
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from CancelToken
-[ RUN      ] CancelToken.IdempotentCancel
-[       OK ] CancelToken.IdempotentCancel (0 ms)
-[----------] 1 test from CancelToken (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"CancelToken.IdempotentCancel" end time: Feb 14 01:50 CST
-"CancelToken.IdempotentCancel" time elapsed: 00:00:00
-----------------------------------------------------------
-
-22/36 Testing: CancelToken.CallbackInvokedOnCancel
-22/36 Test: CancelToken.CallbackInvokedOnCancel
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=CancelToken.CallbackInvokedOnCancel" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"CancelToken.CallbackInvokedOnCancel" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = CancelToken.CallbackInvokedOnCancel
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from CancelToken
-[ RUN      ] CancelToken.CallbackInvokedOnCancel
-[       OK ] CancelToken.CallbackInvokedOnCancel (0 ms)
-[----------] 1 test from CancelToken (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"CancelToken.CallbackInvokedOnCancel" end time: Feb 14 01:50 CST
-"CancelToken.CallbackInvokedOnCancel" time elapsed: 00:00:00
-----------------------------------------------------------
-
-23/36 Testing: CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled
-23/36 Test: CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from CancelToken
-[ RUN      ] CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled
-[       OK ] CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled (0 ms)
-[----------] 1 test from CancelToken (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled" end time: Feb 14 01:50 CST
-"CancelToken.CallbackInvokedImmediatelyIfAlreadyCanceled" time elapsed: 00:00:00
-----------------------------------------------------------
-
-24/36 Testing: CancelToken.ThrowIfCanceled
-24/36 Test: CancelToken.ThrowIfCanceled
-Command: "/Users/huaodong/stv_renew/build/tests/test_task_state_machine" "--gtest_filter=CancelToken.ThrowIfCanceled" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"CancelToken.ThrowIfCanceled" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = CancelToken.ThrowIfCanceled
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from CancelToken
-[ RUN      ] CancelToken.ThrowIfCanceled
-[       OK ] CancelToken.ThrowIfCanceled (0 ms)
-[----------] 1 test from CancelToken (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"CancelToken.ThrowIfCanceled" end time: Feb 14 01:50 CST
-"CancelToken.ThrowIfCanceled" time elapsed: 00:00:00
-----------------------------------------------------------
-
-25/36 Testing: Scheduler.SubmitAndExecute
-25/36 Test: Scheduler.SubmitAndExecute
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.SubmitAndExecute" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.SubmitAndExecute" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.SubmitAndExecute
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.SubmitAndExecute
-[       OK ] Scheduler.SubmitAndExecute (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.SubmitAndExecute" end time: Feb 14 01:50 CST
-"Scheduler.SubmitAndExecute" time elapsed: 00:00:00
-----------------------------------------------------------
-
-27/36 Testing: Scheduler.PriorityOrdering
-27/36 Test: Scheduler.PriorityOrdering
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.PriorityOrdering" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.PriorityOrdering" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.PriorityOrdering
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.PriorityOrdering
-[       OK ] Scheduler.PriorityOrdering (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.PriorityOrdering" end time: Feb 14 01:50 CST
-"Scheduler.PriorityOrdering" time elapsed: 00:00:00
-----------------------------------------------------------
-
-26/36 Testing: Scheduler.DependencyChain
-26/36 Test: Scheduler.DependencyChain
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.DependencyChain" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.DependencyChain" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.DependencyChain
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.DependencyChain
-[       OK ] Scheduler.DependencyChain (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.DependencyChain" end time: Feb 14 01:50 CST
-"Scheduler.DependencyChain" time elapsed: 00:00:00
-----------------------------------------------------------
-
-28/36 Testing: Scheduler.FailedTask
-28/36 Test: Scheduler.FailedTask
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.FailedTask" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.FailedTask" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.FailedTask
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.FailedTask
-[       OK ] Scheduler.FailedTask (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.FailedTask" end time: Feb 14 01:50 CST
-"Scheduler.FailedTask" time elapsed: 00:00:00
-----------------------------------------------------------
-
-29/36 Testing: Scheduler.CancelBeforeExecution
-29/36 Test: Scheduler.CancelBeforeExecution
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.CancelBeforeExecution" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.CancelBeforeExecution" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.CancelBeforeExecution
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.CancelBeforeExecution
-[       OK ] Scheduler.CancelBeforeExecution (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.CancelBeforeExecution" end time: Feb 14 01:50 CST
-"Scheduler.CancelBeforeExecution" time elapsed: 00:00:00
-----------------------------------------------------------
-
-30/36 Testing: Scheduler.NoPendingAfterCompletion
-30/36 Test: Scheduler.NoPendingAfterCompletion
-Command: "/Users/huaodong/stv_renew/build/tests/test_scheduler" "--gtest_filter=Scheduler.NoPendingAfterCompletion" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Scheduler.NoPendingAfterCompletion" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Scheduler.NoPendingAfterCompletion
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Scheduler
-[ RUN      ] Scheduler.NoPendingAfterCompletion
-[       OK ] Scheduler.NoPendingAfterCompletion (0 ms)
-[----------] 1 test from Scheduler (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"Scheduler.NoPendingAfterCompletion" end time: Feb 14 01:50 CST
-"Scheduler.NoPendingAfterCompletion" time elapsed: 00:00:00
-----------------------------------------------------------
-
-34/36 Testing: Pipeline.CancelDuringExecution
-34/36 Test: Pipeline.CancelDuringExecution
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.CancelDuringExecution" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.CancelDuringExecution" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.CancelDuringExecution
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.CancelDuringExecution
-[       OK ] Pipeline.CancelDuringExecution (0 ms)
-[----------] 1 test from Pipeline (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.00 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.CancelDuringExecution" end time: Feb 14 01:50 CST
-"Pipeline.CancelDuringExecution" time elapsed: 00:00:00
-----------------------------------------------------------
-
-32/36 Testing: Pipeline.MockImageGenExecutes
-32/36 Test: Pipeline.MockImageGenExecutes
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.MockImageGenExecutes" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.MockImageGenExecutes" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.MockImageGenExecutes
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.MockImageGenExecutes
-[       OK ] Pipeline.MockImageGenExecutes (320 ms)
-[----------] 1 test from Pipeline (320 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (320 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.33 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.MockImageGenExecutes" end time: Feb 14 01:50 CST
-"Pipeline.MockImageGenExecutes" time elapsed: 00:00:00
-----------------------------------------------------------
-
-35/36 Testing: Pipeline.ProgressCallbackInvoked
-35/36 Test: Pipeline.ProgressCallbackInvoked
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.ProgressCallbackInvoked" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.ProgressCallbackInvoked" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.ProgressCallbackInvoked
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.ProgressCallbackInvoked
-[       OK ] Pipeline.ProgressCallbackInvoked (315 ms)
-[----------] 1 test from Pipeline (315 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (315 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.32 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.ProgressCallbackInvoked" end time: Feb 14 01:50 CST
-"Pipeline.ProgressCallbackInvoked" time elapsed: 00:00:00
-----------------------------------------------------------
-
-36/36 Testing: Pipeline.StageContextTypedIO
-36/36 Test: Pipeline.StageContextTypedIO
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.StageContextTypedIO" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.StageContextTypedIO" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.StageContextTypedIO
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.StageContextTypedIO
-[       OK ] Pipeline.StageContextTypedIO (0 ms)
-[----------] 1 test from Pipeline (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.01 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.StageContextTypedIO" end time: Feb 14 01:50 CST
-"Pipeline.StageContextTypedIO" time elapsed: 00:00:00
-----------------------------------------------------------
-
-33/36 Testing: Pipeline.MockComposeExecutes
-33/36 Test: Pipeline.MockComposeExecutes
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.MockComposeExecutes" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.MockComposeExecutes" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.MockComposeExecutes
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.MockComposeExecutes
-[       OK ] Pipeline.MockComposeExecutes (530 ms)
-[----------] 1 test from Pipeline (530 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (530 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.54 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.MockComposeExecutes" end time: Feb 14 01:50 CST
-"Pipeline.MockComposeExecutes" time elapsed: 00:00:00
-----------------------------------------------------------
-
-31/36 Testing: Pipeline.MockStoryboardExecutes
-31/36 Test: Pipeline.MockStoryboardExecutes
-Command: "/Users/huaodong/stv_renew/build/tests/test_pipeline" "--gtest_filter=Pipeline.MockStoryboardExecutes" "--gtest_also_run_disabled_tests"
-Directory: /Users/huaodong/stv_renew/build/tests
-"Pipeline.MockStoryboardExecutes" start time: Feb 14 01:50 CST
-Output:
-----------------------------------------------------------
-Running main() from /Users/huaodong/stv_renew/build/_deps/googletest-src/googletest/src/gtest_main.cc
-Note: Google Test filter = Pipeline.MockStoryboardExecutes
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Pipeline
-[ RUN      ] Pipeline.MockStoryboardExecutes
-[       OK ] Pipeline.MockStoryboardExecutes (541 ms)
-[----------] 1 test from Pipeline (541 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (541 ms total)
-[  PASSED  ] 1 test.
-<end of output>
-Test time =   0.55 sec
-----------------------------------------------------------
-Test Passed.
-"Pipeline.MockStoryboardExecutes" end time: Feb 14 01:50 CST
-"Pipeline.MockStoryboardExecutes" time elapsed: 00:00:00
-----------------------------------------------------------
-
-End testing: Feb 14 01:50 CST
+End testing: Feb 15 19:12 CST

@@ -1,27 +1,22 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
-# file LICENSE.rst or https://cmake.org/licensing for details.
+# file Copyright.txt or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
+cmake_minimum_required(VERSION 3.5)
 
-# If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
-# existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
-# would cause a fatal error, even though it would be a no-op.
-if(NOT EXISTS "/Users/huaodong/stv_renew/build/_deps/spdlog-src")
-  file(MAKE_DIRECTORY "/Users/huaodong/stv_renew/build/_deps/spdlog-src")
-endif()
 file(MAKE_DIRECTORY
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-build"
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix"
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/tmp"
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp"
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src"
-  "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp"
+  "/home/snow/stv-renew/build/_deps/spdlog-src"
+  "/home/snow/stv-renew/build/_deps/spdlog-build"
+  "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix"
+  "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/tmp"
+  "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp"
+  "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src"
+  "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/huaodong/stv_renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/snow/stv-renew/build/_deps/spdlog-subbuild/spdlog-populate-prefix/src/spdlog-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

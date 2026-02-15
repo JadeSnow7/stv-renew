@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/stv_infra.dir/src/http_client.cpp.o"
+  "CMakeFiles/stv_infra.dir/src/http_client.cpp.o.d"
   "CMakeFiles/stv_infra.dir/src/logger.cpp.o"
   "CMakeFiles/stv_infra.dir/src/logger.cpp.o.d"
   "libstv_infra.a"

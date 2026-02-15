@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /Users/huaodong/stv_renew
-# Build directory: /Users/huaodong/stv_renew/build
+# Source directory: /home/snow/stv-renew
+# Build directory: /home/snow/stv-renew/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

@@ -38,3 +38,12 @@ target_link_libraries(test_pipeline
     PRIVATE stv_core GTest::gtest_main
 )
 gtest_discover_tests(test_pipeline)
+
+# Test: HTTP Client
+add_executable(test_http_client
+    http_client_test.cpp
+)
+target_link_libraries(test_http_client
+    PRIVATE stv_core stv_infra GTest::gtest_main
+)
+gtest_discover_tests(test_http_client)
