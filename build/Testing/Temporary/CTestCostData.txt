@@ -1,8 +1,0 @@
-RetryableHttpClientTest.SuccessOnFirstAttempt 1 0.00263333
-RetryableHttpClientTest.SuccessOnSecondAttempt 1 0.0023798
-RetryableHttpClientTest.ExhaustedRetries 1 0.00229529
-RetryableHttpClientTest.NonRetryableError 1 0.00230931
-RetryableHttpClientTest.CanceledDuringBackoff 1 0.0019097
-RetryableHttpClientTest.ExponentialBackoff 1 0.00240647
-RetryableHttpClientTest.NullCancelToken 1 0.00236413
----

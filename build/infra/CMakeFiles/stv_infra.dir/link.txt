@@ -1,2 +1,0 @@
-/usr/bin/ar qc libstv_infra.a CMakeFiles/stv_infra.dir/src/logger.cpp.o CMakeFiles/stv_infra.dir/src/http_client.cpp.o
-/usr/bin/ranlib libstv_infra.a

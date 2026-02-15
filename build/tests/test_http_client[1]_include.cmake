@@ -1,5 +1,0 @@
-if(EXISTS "/home/snow/stv-renew/build/tests/test_http_client[1]_tests.cmake")
-  include("/home/snow/stv-renew/build/tests/test_http_client[1]_tests.cmake")
-else()
-  add_test(test_http_client_NOT_BUILT test_http_client_NOT_BUILT)
-endif()

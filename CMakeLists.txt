@@ -18,17 +18,18 @@ endif()
 # ---- Options ----
 option(STV_BUILD_TESTS "Build unit tests" ON)
 option(STV_BUILD_APP   "Build Qt application (requires Qt6)" ON)
+option(STV_USE_SYSTEM_SPDLOG "Use system spdlog (requires libspdlog-dev)" OFF)
 
 # ---- Third-party dependencies ----
-# spdlog via FetchContent
-include(FetchContent)
-FetchContent_Declare(
-    spdlog
-    GIT_REPOSITORY https://github.com/gabime/spdlog.git
-    GIT_TAG        v1.15.1
-    GIT_SHALLOW    TRUE
-)
-FetchContent_MakeAvailable(spdlog)
+# spdlog - optional, fallback to simple logging
+if(STV_USE_SYSTEM_SPDLOG)
+    find_package(spdlog REQUIRED)
+    message(STATUS "Using system spdlog: ${spdlog_VERSION}")
+else()
+    message(STATUS "spdlog disabled, using simple logging")
+    add_library(spdlog INTERFACE)
+    target_compile_definitions(spdlog INTERFACE SPDLOG_DISABLED)
+endif()
 
 # ---- Sub-projects (dependency order: infra → core → app) ----
 add_subdirectory(infra)

@@ -1,5 +1,0 @@
-if(EXISTS "/home/snow/stv-renew/build/tests/test_pipeline[1]_tests.cmake")
-  include("/home/snow/stv-renew/build/tests/test_pipeline[1]_tests.cmake")
-else()
-  add_test(test_pipeline_NOT_BUILT test_pipeline_NOT_BUILT)
-endif()

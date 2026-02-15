@@ -1,5 +1,0 @@
-if(EXISTS "/home/snow/stv-renew/build/tests/test_task_state_machine[1]_tests.cmake")
-  include("/home/snow/stv-renew/build/tests/test_task_state_machine[1]_tests.cmake")
-else()
-  add_test(test_task_state_machine_NOT_BUILT test_task_state_machine_NOT_BUILT)
-endif()

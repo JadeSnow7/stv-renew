@@ -47,3 +47,12 @@ target_link_libraries(test_http_client
     PRIVATE stv_core stv_infra GTest::gtest_main
 )
 gtest_discover_tests(test_http_client)
+
+# Test: CURL HTTP Client (integration test, requires network)
+add_executable(test_curl_http_client
+    curl_http_client_test.cpp
+)
+target_link_libraries(test_curl_http_client
+    PRIVATE stv_core stv_infra GTest::gtest_main
+)
+gtest_discover_tests(test_curl_http_client)
