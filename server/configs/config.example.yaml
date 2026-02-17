@@ -1,0 +1,17 @@
+server:
+  addr: ":8080"
+
+auth:
+  jwt_secret: "dev-change-me"
+  access_ttl: "15m"
+  refresh_ttl: "336h"
+
+limits:
+  max_concurrent_tasks: 20
+  max_user_jobs: 2
+  max_scene_workers: 6
+
+storage:
+  provider: "s3-compatible"
+  bucket: "stv-assets"
+  retention_days: 30

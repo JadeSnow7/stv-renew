@@ -13,12 +13,11 @@ Page {
         anchors.margins: 24
         spacing: 16
 
-        // Header
         RowLayout {
             Layout.fillWidth: true
 
             Text {
-                text: "⚙️ Generation Progress"
+                text: "Generation Progress"
                 font.pixelSize: 24
                 font.bold: true
                 color: "#e0e0ff"
@@ -26,7 +25,7 @@ Page {
             }
 
             Button {
-                text: "✕ Cancel"
+                text: "Cancel"
                 visible: presenter.busy
                 onClicked: presenter.cancelGeneration()
 
@@ -42,7 +41,6 @@ Page {
             }
         }
 
-        // Status text
         Text {
             text: presenter.statusText || "Waiting..."
             color: "#aaaacc"
@@ -50,7 +48,6 @@ Page {
             Layout.fillWidth: true
         }
 
-        // Progress bar
         Rectangle {
             Layout.fillWidth: true
             height: 24
@@ -80,7 +77,6 @@ Page {
             }
         }
 
-        // Log output
         Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -109,7 +105,6 @@ Page {
             }
         }
 
-        // Output path
         Rectangle {
             Layout.fillWidth: true
             height: 48
@@ -123,7 +118,7 @@ Page {
                 spacing: 8
 
                 Text {
-                    text: "📁 Output:"
+                    text: "Output:"
                     color: "#8888aa"
                     font.pixelSize: 13
                 }
@@ -137,11 +132,10 @@ Page {
             }
         }
 
-        // Back button (shown when not busy)
         Button {
             Layout.fillWidth: true
             Layout.preferredHeight: 44
-            text: "← New Story"
+            text: "New Story"
             visible: !presenter.busy
             font.pixelSize: 14
 

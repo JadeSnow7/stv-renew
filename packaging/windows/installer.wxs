@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Phase 2 placeholder for WiX installer authoring.
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product
+      Id="*"
+      Name="StoryToVideo Renew"
+      Language="1033"
+      Version="0.1.0.0"
+      Manufacturer="StoryToVideo"
+      UpgradeCode="PUT-UPGRADE-CODE-HERE">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+    <MediaTemplate />
+  </Product>
+</Wix>

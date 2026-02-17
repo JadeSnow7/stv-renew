@@ -1,11 +1,16 @@
-# ---- app module: stv_app (Qt 6 required) ----
-find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2)
+find_package(Qt6 6.5.3 EXACT REQUIRED COMPONENTS Quick QuickControls2)
 
 qt_standard_project_setup()
 
 qt_add_executable(stv_app
     src/main.cpp
     src/presenter.cpp
+    src/auth_presenter.cpp
+    src/project_presenter.cpp
+    src/storyboard_presenter.cpp
+    src/job_presenter.cpp
+    src/asset_presenter.cpp
+    src/export_presenter.cpp
 )
 
 target_include_directories(stv_app
@@ -21,7 +26,6 @@ target_link_libraries(stv_app
         Qt6::QuickControls2
 )
 
-# Process QML resources
 qt_add_resources(stv_app "qml_resources"
     PREFIX "/"
     BASE ${CMAKE_CURRENT_SOURCE_DIR}
@@ -29,6 +33,13 @@ qt_add_resources(stv_app "qml_resources"
         qml/main.qml
         qml/CreatePage.qml
         qml/ProgressPage.qml
+        qml/LoginPage.qml
+        qml/ProjectListPage.qml
+        qml/ProjectEditorPage.qml
+        qml/StoryboardPage.qml
+        qml/AssetLibraryPage.qml
+        qml/ExportPage.qml
 )
 
 target_compile_features(stv_app PRIVATE cxx_std_17)
+set_project_warnings(stv_app)

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 namespace stv::infra {
@@ -19,5 +20,7 @@ public:
   virtual void error(const std::string &trace_id, const std::string &component,
                      const std::string &event, const std::string &msg) = 0;
 };
+
+std::unique_ptr<ILogger> create_console_logger();
 
 } // namespace stv::infra

@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.21)
-project(StoryToVideoRenew
+project(
+    StoryToVideoRenew
     VERSION 0.1.0
     LANGUAGES CXX
-    DESCRIPTION "StoryToVideo Renew — AI Video Generation Desktop Client"
+    DESCRIPTION "StoryToVideo Renew - AI Video Generation Desktop Client"
 )
 
 set(CMAKE_CXX_STANDARD 17)
@@ -10,30 +11,19 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Global warning flags
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic -Werror=return-type)
-endif()
-
-# ---- Options ----
 option(STV_BUILD_TESTS "Build unit tests" ON)
-option(STV_BUILD_APP   "Build Qt application (requires Qt6)" ON)
-option(STV_USE_SYSTEM_SPDLOG "Use system spdlog (requires libspdlog-dev)" OFF)
+option(STV_BUILD_APP "Build Qt application (requires Qt6)" ON)
 
-# ---- Third-party dependencies ----
-# spdlog - optional, fallback to simple logging
-if(STV_USE_SYSTEM_SPDLOG)
-    find_package(spdlog REQUIRED)
-    message(STATUS "Using system spdlog: ${spdlog_VERSION}")
-else()
-    message(STATUS "spdlog disabled, using simple logging")
-    add_library(spdlog INTERFACE)
-    target_compile_definitions(spdlog INTERFACE SPDLOG_DISABLED)
+# Locked decision: spdlog is mandatory across platforms.
+find_package(spdlog REQUIRED)
+if(NOT TARGET spdlog::spdlog)
+    message(FATAL_ERROR "spdlog::spdlog target is required")
 endif()
 
-# ---- Sub-projects (dependency order: infra → core → app) ----
-add_subdirectory(infra)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
+
 add_subdirectory(core)
+add_subdirectory(infra)
 
 if(STV_BUILD_APP)
     add_subdirectory(app)

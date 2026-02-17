@@ -3,5 +3,11 @@
         <file>qml/main.qml</file>
         <file>qml/CreatePage.qml</file>
         <file>qml/ProgressPage.qml</file>
+        <file>qml/LoginPage.qml</file>
+        <file>qml/ProjectListPage.qml</file>
+        <file>qml/ProjectEditorPage.qml</file>
+        <file>qml/StoryboardPage.qml</file>
+        <file>qml/AssetLibraryPage.qml</file>
+        <file>qml/ExportPage.qml</file>
     </qresource>
 </RCC>
