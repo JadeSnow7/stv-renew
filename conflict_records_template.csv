@@ -1,0 +1,3 @@
+﻿conflict_id,topic,claim_a,claim_a_source_ids,claim_a_confidence,claim_b,claim_b_source_ids,claim_b_confidence,resolution,resolution_reason,scope_tag,status
+C001,AI面顺序,"AI面在技术面之前","S002|S015",72,"AI面在一面后、二面前","S021|S030",68,list_both,"不同BG与批次差异，证据接近，保留双结论",WXG_2025H1,open
+C002,算法占比,"客户端校招普遍有算法手撕","S010|S014",76,"多数场次不考算法","S018|S025",64,needs_more_data,"样本分布不均，需增加PC客户端精准样本",pc_client,open

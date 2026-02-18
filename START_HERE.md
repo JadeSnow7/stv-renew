@@ -22,6 +22,18 @@
    - 证据可信度评分与分级门槛
 7. `week1_seed_links.md`
    - 已验证的起始证据池（7 条）
+8. `week2_to_week6_checklist.md`
+   - Week2 到 Week6 的周执行路线与 Gate
+9. `question_bank_template.csv`
+   - 题库结构化模板（QuestionItem 字段）
+10. `conflict_records_template.csv`
+   - 冲突记录模板（ConflictRecord 字段）
+11. `evidence_claim_map_template.csv`
+   - 结论与证据映射模板
+12. `interview_script_templates.md`
+   - 15/30/45/60 分钟模拟面脚本模板
+13. `mvp_delivery_checklist.md`
+   - Week6 MVP 封版验收清单
 
 ## 3. Week1 产出物（最小要求）
 1. `week1_links_day1_raw.txt`：Day1 原始候选链接（>=10）

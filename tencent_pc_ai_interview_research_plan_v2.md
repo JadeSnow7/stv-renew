@@ -205,3 +205,16 @@
 2. 默认 `PC+Qt` 精准样本稀缺，MVP 按 `>=10` 执行。  
 3. 默认 AI 面样本以“候选人回忆 + 官方产品能力文档”联合推断，并标注置信度。  
 4. 默认先交付可训练版本，再迭代到标准版，不等待“完美数据”。
+
+---
+
+## 11. 落地文件清单（执行用）
+1. `search_keywords.md`：检索词库  
+2. `week1_checklist.md`：Week1 日任务  
+3. `week2_to_week6_checklist.md`：Week2-Week6 周任务  
+4. `sample_template.csv`：InterviewSample 录入  
+5. `question_bank_template.csv`：QuestionItem 录入  
+6. `conflict_records_template.csv`：ConflictRecord 记录  
+7. `evidence_claim_map_template.csv`：结论-证据映射  
+8. `interview_script_templates.md`：模拟面脚本模板  
+9. `mvp_delivery_checklist.md`：MVP 验收

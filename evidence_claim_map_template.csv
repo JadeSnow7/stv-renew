@@ -1,0 +1,4 @@
+﻿claim_id,claim_text,claim_level,required_support_count,actual_support_count,primary_source_ids,secondary_source_ids,status,notes
+CL001,腾讯PC客户端面试普遍包含2-3轮技术面,core,2,2,"S001|S003","S012",verified,满足核心结论门槛
+CL002,AI面已经成为多数批次的固定环节,core,2,1,"S002",,weak,当前证据不足 需补样本
+CL003,Qt问题更偏线程模型与QML性能,secondary,2,2,"S004|S016","S011",verified,可进入题库主来源
