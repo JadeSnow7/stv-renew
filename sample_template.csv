@@ -1,0 +1,5 @@
+﻿sample_id,dedupe_fingerprint,source_url,source_tier,published_at,time_decay_weight,cohort,bg_team,role_tag,rounds,mentions_ai_round,detail_richness,engagement_score,confidence_score,verified_by_real_interview,notes
+S001,hash_placeholder_001,https://www.nowcoder.com/feed/main/detail/3d5e041f215740a599b81fc28f213f7a,L1,2025-03-01,0.7,campus,WXG,pc_client_cpp_qt,"assessment|tech_1|tech_2|tech_3|hr",FALSE,high,80,82,FALSE,"PC客户端方向，一二三面结构清晰"
+S002,hash_placeholder_002,https://www.nowcoder.com/feed/main/detail/7cee87ca1e24418a92b081a3162aebb0,L1,2025-01-01,0.7,campus,unknown,client_general,"assessment|ai_round|tech_1|hr",TRUE,medium,60,72,FALSE,"包含AI面试描述，需后续交叉验证"
+S003,hash_placeholder_003,https://trtc.io/zh/document/75309,L1,2025-01-01,0.7,unknown,unknown,unclear,"ai_round",TRUE,medium,50,68,FALSE,"官方产品侧证据，用于AI面形式旁证"
+S004,,,,,,,,,,,,,,,
