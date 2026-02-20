@@ -1,3 +1,6 @@
+# ---- tests ----
+option(STV_ENABLE_NETWORK_TESTS "Enable tests that require network access" OFF)
+
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -38,11 +41,14 @@ target_link_libraries(test_http_client PRIVATE stv_core stv_infra GTest::gtest_m
 set_project_warnings(test_http_client)
 gtest_discover_tests(test_http_client)
 
+# Test: CURL HTTP Client (integration test, local loopback fixture)
 add_executable(test_curl_http_client
     curl_http_client_test.cpp
 )
-target_link_libraries(test_curl_http_client PRIVATE stv_core stv_infra GTest::gtest_main)
-set_project_warnings(test_curl_http_client)
+target_link_libraries(test_curl_http_client
+    PRIVATE stv_core stv_infra GTest::gtest_main
+)
+message(STATUS "curl_http_client_test uses local loopback fixture (no external network required)")
 gtest_discover_tests(test_curl_http_client)
 
 add_executable(test_path_service

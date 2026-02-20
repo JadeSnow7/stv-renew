@@ -2,7 +2,6 @@
 
 #include "core/orchestrator.h"
 #include "core/scheduler.h"
-#include "infra/logger.h"
 
 #include <QDateTime>
 
@@ -11,7 +10,7 @@
 namespace stv::app {
 
 Presenter::Presenter(std::shared_ptr<stv::core::IScheduler> scheduler,
-                     std::shared_ptr<stv::infra::ILogger> logger,
+                     std::shared_ptr<stv::core::ILogger> logger,
                      QObject *parent)
     : QObject(parent), scheduler_(std::move(scheduler)),
       logger_(std::move(logger)) {
@@ -96,6 +95,10 @@ void Presenter::startGeneration(const QString &storyText, const QString &style,
   appendLog("trace_id: " + current_trace_id_);
 
   tick_timer_->start();
+}
+
+void Presenter::set_stage_factory(stv::core::WorkflowEngine::StageFactory factory) {
+  engine_->set_stage_factory(std::move(factory));
 }
 
 void Presenter::cancelGeneration() {

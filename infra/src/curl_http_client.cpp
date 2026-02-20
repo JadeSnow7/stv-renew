@@ -37,8 +37,8 @@ size_t CurlHttpClient::write_callback(char* ptr, size_t size, size_t nmemb, void
 }
 
 // Progress callback：支持取消
-int CurlHttpClient::progress_callback(void* clientp, curl_off_t dltotal, curl_off_t dlnow,
-                                       curl_off_t ultotal, curl_off_t ulnow) {
+int CurlHttpClient::progress_callback(void* clientp, long long dltotal, long long dlnow,
+                                       long long ultotal, long long ulnow) {
     (void)dltotal; (void)dlnow; (void)ultotal; (void)ulnow;  // 避免未使用警告
 
     auto* cancel_token = static_cast<stv::core::CancelToken*>(clientp);
@@ -78,6 +78,24 @@ stv::core::Result<HttpResponse, stv::core::TaskError> CurlHttpClient::execute(
     std::shared_ptr<stv::core::CancelToken> cancel_token
 ) {
     using Result = stv::core::Result<HttpResponse, stv::core::TaskError>;
+    std::lock_guard<std::mutex> curl_lock(curl_mutex_);
+
+    auto effective_cancel_token =
+        cancel_token ? std::move(cancel_token) : stv::core::CancelToken::create();
+
+    if (!request.request_id.empty()) {
+        std::lock_guard<std::mutex> lock(in_flight_mutex_);
+        in_flight_requests_[request.request_id] = effective_cancel_token;
+    }
+    const auto unregister_request = [this, request_id = request.request_id](void*) {
+        if (request_id.empty()) {
+            return;
+        }
+        std::lock_guard<std::mutex> lock(in_flight_mutex_);
+        in_flight_requests_.erase(request_id);
+    };
+    std::unique_ptr<void, decltype(unregister_request)> in_flight_guard(
+        nullptr, unregister_request);
 
     // 重置 CURL handle（清除上次请求的状态）
     curl_easy_reset(curl_);
@@ -116,9 +134,9 @@ stv::core::Result<HttpResponse, stv::core::TaskError> CurlHttpClient::execute(
     curl_easy_setopt(curl_, CURLOPT_WRITEDATA, &response_buffer);
 
     // 设置取消支持（通过 progress callback）
-    if (cancel_token) {
+    if (effective_cancel_token) {
         curl_easy_setopt(curl_, CURLOPT_XFERINFOFUNCTION, &CurlHttpClient::progress_callback);
-        curl_easy_setopt(curl_, CURLOPT_XFERINFODATA, cancel_token.get());
+        curl_easy_setopt(curl_, CURLOPT_XFERINFODATA, effective_cancel_token.get());
         curl_easy_setopt(curl_, CURLOPT_NOPROGRESS, 0L);  // 启用 progress callback
     }
 
@@ -206,12 +224,37 @@ stv::core::Result<HttpResponse, stv::core::TaskError> CurlHttpClient::execute(
     HttpResponse response;
     response.status_code = static_cast<int>(http_code);
     response.body = std::move(response_buffer);
-    response.request_id = request.trace_id + "_resp";  // 简化版，实际应从响应头提取
+    response.request_id = request.request_id.empty()
+                              ? request.trace_id + "_resp"
+                              : request.request_id + "_resp";
     response.elapsed_ms = std::chrono::milliseconds(elapsed_ms);
 
     // TODO: 解析响应头（需要设置 CURLOPT_HEADERFUNCTION）
 
     return Result::Ok(std::move(response));
+}
+
+bool CurlHttpClient::cancel(const std::string& request_id) {
+    if (request_id.empty()) {
+        return false;
+    }
+
+    std::shared_ptr<stv::core::CancelToken> token;
+    {
+        std::lock_guard<std::mutex> lock(in_flight_mutex_);
+        auto it = in_flight_requests_.find(request_id);
+        if (it == in_flight_requests_.end()) {
+            return false;
+        }
+        token = it->second.lock();
+        if (!token) {
+            in_flight_requests_.erase(it);
+            return false;
+        }
+    }
+
+    token->request_cancel();
+    return true;
 }
 
 } // namespace stv::infra

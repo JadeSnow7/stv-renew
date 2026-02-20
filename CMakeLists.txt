@@ -22,6 +22,7 @@ endif()
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CompilerWarnings.cmake)
 
+# ---- Sub-projects (dependency order: infra_base + core → infra_net → app) ----
 add_subdirectory(core)
 add_subdirectory(infra)
 

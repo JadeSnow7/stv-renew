@@ -1,5 +1,4 @@
 #include "core/orchestrator.h"
-#include "infra/logger.h"
 
 #include <algorithm>
 #include <random>
@@ -11,7 +10,7 @@ namespace stv::core {
 std::shared_ptr<IStage> create_mock_stage(TaskType type);
 
 WorkflowEngine::WorkflowEngine(std::shared_ptr<IScheduler> scheduler,
-                               std::shared_ptr<infra::ILogger> logger)
+                               std::shared_ptr<ILogger> logger)
     : scheduler_(std::move(scheduler)), logger_(std::move(logger)),
       stage_factory_(create_mock_stage) // Default: use mock stages
 {

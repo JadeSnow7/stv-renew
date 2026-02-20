@@ -215,43 +215,122 @@
 
 ---
 
+## 🎉 M2 完整实施总结（2026-02-20）
+
+> **状态**: ✅ **代码实现完成**，待实际验证  
+> **完成度**: 100%（代码） / 0%（实测）
+
+### Phase 0: 环境与构建门禁 ✅
+
+1. ✅ 拆分 `infra` 为 `infra_base` 和 `infra_net`，消除循环依赖
+2. ✅ 创建依赖探测脚本 `scripts/check_dependencies.sh`
+3. ✅ 修改测试框架，支持 `STV_ENABLE_NETWORK_TESTS=OFF`
+
+### Phase 1: 服务端骨架与协议 ✅
+
+1. ✅ FastAPI 服务端完整实现 (`server/app/main.py`)
+2. ✅ Pydantic schemas 定义 (`server/app/schemas.py`)
+3. ✅ Provider 架构：BaseProvider + MockProvider + LocalGpuProvider
+4. ✅ 服务类：TaskRegistry + FFmpegComposer
+5. ✅ API v1 完整定义（healthz, storyboard, imagegen, tts, compose, cancel）
+
+### Phase 2: 客户端真实 Stage 接入 ✅
+
+1. ✅ 实现真实 Stage (`infra/src/stages.cpp`)
+   - StoryboardStage, ImageGenStage, TtsStage, ComposeStage
+2. ✅ 实现 StageFactory (`infra/include/infra/stage_factory.h`)
+3. ✅ 修改 Presenter 和 main.cpp，集成 HTTP client 和 stage factory
+4. ✅ 完整数据流：QML → Presenter → WorkflowEngine → Stage → HTTP → 服务端
+
+### Phase 3: GPU Provider 与 NVENC ✅
+
+1. ✅ 完善 LocalGpuProvider：CUDA 探测、SD 1.5 加载、GPU 锁
+2. ✅ 图像生成：SD 推理 + 自动降级
+3. ✅ FFmpeg 改进：编码器探测、NVENC 优先、libx264 回退
+4. ✅ 资源预算：GPU slots + VRAM 软限制
+
+### Phase 4: 可靠性收口与可观测性 ✅
+
+1. ✅ XDG 路径管理 (`infra/include/infra/config.h`)
+2. ✅ 配置管理：环境变量覆盖
+3. ✅ 可观测性文档 (`docs/OBSERVABILITY.md`)
+
+### Phase 5: 测试与验收 ✅
+
+1. ✅ 端到端测试脚本 (`scripts/test_e2e_mock.sh`)
+2. ✅ 构建测试脚本 (`scripts/test_build.sh`)
+3. ✅ M2 验收文档 (`docs/M2_ACCEPTANCE.md`)
+
+### 关键成果物
+
+**服务端**:
+- `server/app/main.py` - FastAPI 入口
+- `server/app/providers/mock.py` - Mock Provider
+- `server/app/providers/local_gpu.py` - GPU Provider
+
+**客户端**:
+- `infra/src/stages.cpp` - 真实 Stage 实现
+- `infra/include/infra/stage_factory.h` - Stage 工厂
+- `infra/include/infra/config.h` - XDG 配置
+
+**测试与文档**:
+- `scripts/test_e2e_mock.sh` - E2E 测试
+- `docs/OBSERVABILITY.md` - 可观测性指南
+- `docs/M2_ACCEPTANCE.md` - 验收文档
+
+### 待办事项
+
+**立即行动**（M2 验收前）:
+```bash
+# 1. 安装系统依赖
+sudo apt install libcurl4-openssl-dev python3-pip python3-venv
+
+# 2. 安装 Python 依赖
+cd server && python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+# 3. 运行测试
+cd ..
+./scripts/test_build.sh
+./scripts/test_e2e_mock.sh
+```
+
+**可选**（完整验收）:
+```bash
+# 安装 Qt6
+sudo apt install qt6-base-dev qt6-declarative-dev
+
+# 安装 GPU 依赖
+pip install -r server/requirements-gpu.txt
+```
+
+### 依赖状态
+
+| 组件 | 状态 | 备注 |
+|------|------|------|
+| CMake, g++, Python | ✅ 可用 | - |
+| GPU (RTX 4060, 8GB) | ✅ 可用 | Driver 590.48.01 |
+| FFmpeg | ✅ 可用 | 6.1.1 |
+| libcurl-dev | ❌ 缺失 | 需安装 |
+| Qt6 | ❌ 缺失 | 需安装 |
+| Python 依赖 | ❌ 缺失 | 需安装 |
+| h264_nvenc | ⚠ 不可用 | 将回退到 libx264 |
+
+---
+
 ## 📚 参考资料
 
 - [libcurl Easy Interface](https://curl.se/libcurl/c/libcurl-easy.html)
 - [C++17 std::from_chars](https://en.cppreference.com/w/cpp/utility/from_chars)
-- [腾讯 WXG 面试经验](https://www.nowcoder.com/discuss/77507)
-- [C++ Concurrency in Action](https://www.manning.com/books/c-plus-plus-concurrency-in-action-second-edition)
+- [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Stable Diffusion 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5)
 
 ---
 
 ## 🤝 如何继续推进
 
-1. **等待 CMake 配置完成**
-   ```bash
-   # 检查 CMake 状态
-   tail -f /tmp/claude-1000/-home-snow-stv-renew/tasks/b77e7a1.output
-   ```
+详见 `docs/M2_ACCEPTANCE.md` 验收文档。
 
-2. **编译项目**
-   ```bash
-   cd /home/snow/stv-renew
-   cmake --build build -j$(nproc)
-   ```
-
-3. **运行测试**
-   ```bash
-   # 运行所有测试
-   cd build && ctest --output-on-failure
-
-   # 只运行 HTTP Client 测试（需要网络）
-   ./tests/test_curl_http_client
-   ```
-
-4. **继续 M2 开发**
-   - 修复线程安全问题
-   - 实现单元测试
-   - 集成真实 API
-
----
-
-**Good Luck! 继续加油！** 🚀
+**M2 代码完成！待实际验证！** 🚀

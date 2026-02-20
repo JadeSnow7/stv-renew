@@ -2,6 +2,7 @@
 #include "core/result.h"
 #include "core/task_error.h"
 #include "core/cancel_token.h"
+#include "core/logger.h"
 #include <string>
 #include <map>
 #include <memory>
@@ -22,6 +23,7 @@ enum class HttpMethod {
 struct HttpRequest {
     HttpMethod method;
     std::string url;
+    std::string request_id;  // 客户端生成，用于取消/串联日志
     std::map<std::string, std::string> headers;
     std::string body;
     std::string trace_id;  // 可观测性：贯穿请求链路
@@ -104,6 +106,7 @@ struct RetryPolicy {
     std::chrono::milliseconds initial_backoff{1000};  // 首次退避 1s
     double backoff_multiplier = 2.0;  // 指数退避因子
     std::chrono::milliseconds max_backoff{30000};  // 最大退避 30s
+    std::chrono::milliseconds sleep_slice{100};  // 取消检查粒度
 
     // 判断是否应该重试（根据错误码）
     bool should_retry(HttpErrorCode code) const {
@@ -119,7 +122,8 @@ class RetryableHttpClient : public IHttpClient {
 public:
     RetryableHttpClient(
         std::shared_ptr<IHttpClient> inner,
-        RetryPolicy policy = {}
+        RetryPolicy policy = {},
+        std::shared_ptr<stv::core::ILogger> logger = nullptr
     );
 
     stv::core::Result<HttpResponse, stv::core::TaskError> execute(
@@ -132,6 +136,7 @@ public:
 private:
     std::shared_ptr<IHttpClient> inner_;
     RetryPolicy policy_;
+    std::shared_ptr<stv::core::ILogger> logger_;
 };
 
 } // namespace stv::infra

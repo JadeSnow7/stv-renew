@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/pipeline.h"
+#include "core/logger.h"
 #include "core/result.h"
 #include "core/scheduler.h"
 #include "core/task.h"
@@ -12,10 +13,6 @@
 #include <vector>
 
 namespace stv {
-namespace infra {
-class ILogger;
-}
-
 namespace core {
 
 /// WorkflowEngine — orchestrates the creation and submission of a linked
@@ -32,7 +29,7 @@ namespace core {
 class WorkflowEngine {
 public:
   WorkflowEngine(std::shared_ptr<IScheduler> scheduler,
-                 std::shared_ptr<infra::ILogger> logger);
+                 std::shared_ptr<ILogger> logger);
 
   /// Workflow completion callback.
   /// Parameters: trace_id, success, output_path (empty on failure)
@@ -68,7 +65,7 @@ public:
 
 private:
   std::shared_ptr<IScheduler> scheduler_;
-  std::shared_ptr<infra::ILogger> logger_;
+  std::shared_ptr<ILogger> logger_;
   CompletionCallback completion_cb_;
   ProgressCallback progress_cb_;
   StageFactory stage_factory_;

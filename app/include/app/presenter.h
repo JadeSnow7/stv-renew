@@ -15,10 +15,6 @@ class IScheduler;
 class WorkflowEngine;
 } // namespace stv::core
 
-namespace stv::infra {
-class ILogger;
-} // namespace stv::infra
-
 namespace stv::app {
 
 /// Presenter — thin QObject bridge between QML UI and core WorkflowEngine.
@@ -40,7 +36,7 @@ class Presenter : public QObject {
 
 public:
   explicit Presenter(std::shared_ptr<stv::core::IScheduler> scheduler,
-                     std::shared_ptr<stv::infra::ILogger> logger,
+                     std::shared_ptr<stv::core::ILogger> logger,
                      QObject *parent = nullptr);
 
   // ---- Properties ----
@@ -54,6 +50,10 @@ public:
   Q_INVOKABLE void startGeneration(const QString &storyText,
                                    const QString &style, int sceneCount);
   Q_INVOKABLE void cancelGeneration();
+
+  // ---- Configuration ----
+  /// Set the stage factory for the workflow engine (should be called before startGeneration)
+  void set_stage_factory(stv::core::WorkflowEngine::StageFactory factory);
 
 signals:
   void busyChanged();
@@ -69,7 +69,7 @@ private slots:
 private:
   std::shared_ptr<stv::core::WorkflowEngine> engine_;
   std::shared_ptr<stv::core::IScheduler> scheduler_;
-  std::shared_ptr<stv::infra::ILogger> logger_;
+  std::shared_ptr<stv::core::ILogger> logger_;
 
   QTimer *tick_timer_;
   QString current_trace_id_;

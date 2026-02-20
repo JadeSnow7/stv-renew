@@ -1,0 +1,20 @@
+# GPU Inference Dependencies
+# 用于 local_gpu provider 的可选依赖
+
+# PyTorch（CUDA 12.1）
+--index-url https://download.pytorch.org/whl/cu121
+torch==2.2.0
+torchvision==0.17.0
+torchaudio==2.2.0
+
+# Diffusers & Transformers
+diffusers==0.27.0
+transformers==4.38.0
+accelerate==0.27.0
+
+# Memory Optimization
+xformers==0.0.24  # 可选，用于加速 attention
+
+# Model Hub
+huggingface-hub==0.20.0
+safetensors==0.4.2

@@ -1,0 +1,22 @@
+# StoryToVideo Server - Python Dependencies
+
+# Web Framework
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+pydantic==2.9.0
+
+# Image Processing
+Pillow==11.0.0
+
+# GPU Inference (optional, for local_gpu provider)
+# 安装这些依赖以启用真实的 GPU 推理：
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# pip install diffusers transformers accelerate xformers
+# 
+# 或使用以下命令一键安装（需要 CUDA 12.1+）：
+# pip install -r requirements-gpu.txt
+
+# Development
+pytest==8.3.0
+pytest-asyncio==0.24.0
+httpx==0.27.0  # For testing FastAPI endpoints

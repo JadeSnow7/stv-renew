@@ -2,6 +2,9 @@
 
 #include "infra/http_client.h"
 #include <memory>
+#include <cstdint>
+#include <mutex>
+#include <unordered_map>
 
 // 前向声明（隐藏 curl 实现细节）
 typedef void CURL;
@@ -23,9 +26,13 @@ public:
         const HttpRequest& request,
         std::shared_ptr<stv::core::CancelToken> cancel_token = nullptr
     ) override;
+    bool cancel(const std::string& request_id) override;
 
 private:
     CURL* curl_;  // libcurl handle（单实例，非线程安全）
+    std::mutex curl_mutex_;
+    std::mutex in_flight_mutex_;
+    std::unordered_map<std::string, std::weak_ptr<stv::core::CancelToken>> in_flight_requests_;
 
     // 辅助方法
     HttpErrorCode classify_curl_error(int curl_code) const;
@@ -34,8 +41,8 @@ private:
 
     // CURL 回调函数（静态）
     static size_t write_callback(char* ptr, size_t size, size_t nmemb, void* userdata);
-    static int progress_callback(void* clientp, curl_off_t dltotal, curl_off_t dlnow,
-                                  curl_off_t ultotal, curl_off_t ulnow);
+    static int progress_callback(void* clientp, long long dltotal, long long dlnow,
+                                  long long ultotal, long long ulnow);
 };
 
 } // namespace stv::infra

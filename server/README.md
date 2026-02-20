@@ -1,66 +1,77 @@
-# StoryToVideo Renew Server (Go/Gin)
+# StoryToVideo Server
 
-This is the service-side implementation scaffold for the unified StoryToVideo plan.
+本目录包含两套服务端实现，可根据需求选择。
 
-## Features in this baseline
+---
 
-- JWT auth (`login`, `refresh`, `logout`, `me`)
+## Python FastAPI 服务端（M2 当前实现）
+
+本地 AI 视频生成服务端，支持多种 provider 模式。
+
+### Provider 模式
+
+- **Mock**：快速返回模拟数据，不依赖 GPU。用于开发/测试/CI。
+- **Local GPU**：使用本地 GPU 推理（torch + diffusers），推荐 8GB+ VRAM。
+
+### 快速开始
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+export STV_PROVIDER=mock
+export STV_OUTPUT_DIR=/tmp/stv-output
+python -m app.main
+```
+
+服务默认监听 `http://127.0.0.1:8765`。API 文档：`http://127.0.0.1:8765/docs`
+
+### API Endpoints
+
+- `GET /healthz` - 健康检查
+- `POST /v1/storyboard` - 生成分镜脚本
+- `POST /v1/imagegen` - 生成图像
+- `POST /v1/tts` - 生成语音
+- `POST /v1/compose` - 合成视频
+- `POST /v1/cancel/{request_id}` - 取消任务
+
+### 环境变量
+
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| `STV_PROVIDER` | `mock` | Provider 模式：mock/local_gpu |
+| `STV_HOST` | `127.0.0.1` | 监听地址 |
+| `STV_PORT` | `8765` | 监听端口 |
+| `STV_OUTPUT_DIR` | `/tmp/stv-output` | 输出目录 |
+| `STV_GPU_SLOTS` | `1` | GPU 并发槽位 |
+| `STV_VRAM_LIMIT_GB` | `7.5` | VRAM 软限制（GB）|
+
+---
+
+## Go/Gin 服务端（跨平台后端骨架）
+
+统一跨平台服务端，包含完整 JWT 认证、项目管理、作业调度和 SSE 事件流。
+
+### 功能
+
+- JWT auth（login/refresh/logout/me）
 - Project + storyboard CRUD
-- Job orchestration with DAG stages:
-  - `storyboard_generate`
-  - `image_generate_*` (parallel)
-  - `tts_generate_*` (parallel)
-  - `compose_video`
-- Cooperative cancel + retry endpoint
-- SSE event stream with backlog replay (`Last-Event-ID`)
-- Asset APIs and export APIs (signed URL placeholder)
-- Unified response shape:
-  - `{ "data": ..., "trace_id": "..." }`
-  - `{ "error": { "code", "message", "retryable", "details" }, "trace_id": "..." }`
+- Job 调度（DAG stages: storyboard → image × N → tts × N → compose）
+- SSE 事件流（带 backlog replay）
+- 合作取消 + 重试
 
-## Quick start
+### 快速开始
 
 ```bash
-cd server
 go mod tidy
 go run ./cmd/stv-server
 ```
 
-Windows (PowerShell):
+默认监听 `:8080`。Demo 账号：`demo@stv.local` / `demo123456`
 
-```powershell
-cd server
-go mod tidy
-go run .\cmd\stv-server
-```
-
-macOS/Linux:
-
-```bash
-cd server
-go mod tidy
-go run ./cmd/stv-server
-```
-
-Server listens on `:8080` by default.
-
-Demo account:
-
-- email: `demo@stv.local`
-- password: `demo123456`
-
-## Environment variables
+### 环境变量
 
 - `STV_SERVER_ADDR` (default `:8080`)
 - `STV_JWT_SECRET` (default `dev-change-me`)
-- `STV_ACCESS_TTL` (default `15m`)
-- `STV_REFRESH_TTL` (default `336h`)
 - `STV_MAX_CONCURRENT_TASKS` (default `20`)
-- `STV_MAX_USER_JOBS` (default `2`)
-- `STV_MAX_SCENE_WORKERS` (default `6`)
-
-## Notes
-
-- Current persistence is in-memory for fast local integration. SQL migrations are provided under `migrations/`.
-- Provider layer currently uses a mock adapter. Replace `internal/provider` with real LLM/Image/TTS/FFmpeg adapters.
-- Signed download URL is placeholder logic for S3-compatible storage.
