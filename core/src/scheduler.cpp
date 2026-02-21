@@ -19,17 +19,47 @@ namespace stv::core {
 ///  and resource budgets."
 class SimpleScheduler : public IScheduler {
 public:
-  void submit(TaskDescriptor task, std::shared_ptr<IStage> stage) override {
+  Result<void, TaskError> submit(TaskDescriptor task,
+                                 std::shared_ptr<IStage> stage) override {
     std::lock_guard<std::mutex> lock(mutex_);
 
+    if (!stage) {
+      return Result<void, TaskError>::Err(
+          TaskError::Internal("Stage must not be null"));
+    }
+
+    if (task.task_id.empty()) {
+      return Result<void, TaskError>::Err(
+          TaskError::Internal("task_id must not be empty"));
+    }
+
     const std::string id = task.task_id;
+    if (find_entry(id) != entries_.end()) {
+      return Result<void, TaskError>::Err(
+          TaskError::Internal("Duplicate task_id: " + id));
+    }
+
+    for (const auto &dep_id : task.deps) {
+      if (dep_id == id) {
+        return Result<void, TaskError>::Err(
+            TaskError::Internal("Task cannot depend on itself: " + id));
+      }
+      if (find_entry(dep_id) == entries_.end()) {
+        return Result<void, TaskError>::Err(
+            TaskError::Internal("Dependency not found: " + dep_id));
+      }
+    }
 
     // Check if dependencies are already met (empty deps → Ready immediately)
     if (task.deps.empty()) {
-      task.transition_to(TaskState::Ready);
+      auto to_ready = task.transition_to(TaskState::Ready);
+      if (to_ready.is_err()) {
+        return Result<void, TaskError>::Err(to_ready.error());
+      }
     }
 
     entries_.push_back(Entry{std::move(task), std::move(stage), {}});
+    return Result<void, TaskError>::Ok();
   }
 
   Result<void, TaskError> cancel(const std::string &task_id) override {
@@ -70,9 +100,10 @@ public:
       return Result<void, TaskError>::Err(
           TaskError::Internal("Task not found: " + task_id));
     }
-    auto result = it->task.transition_to(TaskState::Running);
+    const TaskState resume_target = it->task.paused_from.value_or(TaskState::Running);
+    auto result = it->task.transition_to(resume_target);
     if (result.is_ok()) {
-      notify(task_id, TaskState::Running, it->task.progress);
+      notify(task_id, resume_target, it->task.progress);
     }
     return result;
   }

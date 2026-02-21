@@ -70,7 +70,7 @@ TEST(Scheduler, SubmitAndExecute) {
     events.emplace_back(id, s);
   });
 
-  scheduler->submit(std::move(task), stage);
+  ASSERT_TRUE(scheduler->submit(std::move(task), stage).is_ok());
   scheduler->tick();
 
   ASSERT_EQ(stage->execution_count, 1);
@@ -97,8 +97,8 @@ TEST(Scheduler, DependencyChain) {
   task2.type = TaskType::ImageGen;
   task2.deps = {"dep-001"}; // Depends on task1
 
-  scheduler->submit(std::move(task1), stage1);
-  scheduler->submit(std::move(task2), stage2);
+  ASSERT_TRUE(scheduler->submit(std::move(task1), stage1).is_ok());
+  ASSERT_TRUE(scheduler->submit(std::move(task2), stage2).is_ok());
 
   // First tick: should execute task1
   scheduler->tick();
@@ -129,8 +129,8 @@ TEST(Scheduler, PriorityOrdering) {
   high.type = TaskType::Storyboard;
   high.priority = 100;
 
-  scheduler->submit(std::move(low), low_stage);
-  scheduler->submit(std::move(high), high_stage);
+  ASSERT_TRUE(scheduler->submit(std::move(low), low_stage).is_ok());
+  ASSERT_TRUE(scheduler->submit(std::move(high), high_stage).is_ok());
 
   // First tick: should pick high priority
   scheduler->tick();
@@ -155,7 +155,7 @@ TEST(Scheduler, FailedTask) {
   scheduler->on_state_change(
       [&](const std::string &, TaskState s, float) { states.push_back(s); });
 
-  scheduler->submit(std::move(task), stage);
+  ASSERT_TRUE(scheduler->submit(std::move(task), stage).is_ok());
   scheduler->tick();
 
   ASSERT_FALSE(states.empty());
@@ -173,7 +173,7 @@ TEST(Scheduler, CancelBeforeExecution) {
   task.type = TaskType::ImageGen;
   task.cancel_token = token;
 
-  scheduler->submit(std::move(task), stage);
+  ASSERT_TRUE(scheduler->submit(std::move(task), stage).is_ok());
 
   // Cancel before tick
   auto result = scheduler->cancel("cancel-001");
@@ -191,7 +191,7 @@ TEST(Scheduler, NoPendingAfterCompletion) {
   task.trace_id = "trace-6";
   task.type = TaskType::TTS;
 
-  scheduler->submit(std::move(task), stage);
+  ASSERT_TRUE(scheduler->submit(std::move(task), stage).is_ok());
   ASSERT_TRUE(scheduler->has_pending_tasks());
 
   scheduler->tick();

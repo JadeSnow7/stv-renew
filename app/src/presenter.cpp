@@ -89,11 +89,22 @@ void Presenter::startGeneration(const QString &storyText, const QString &style,
   appendLog("Style: " + style);
   appendLog("Scenes: " + QString::number(sceneCount));
 
-  std::string trace_id = engine_->start_workflow(
-      storyText.toStdString(), style.toStdString(), sceneCount);
-  current_trace_id_ = QString::fromStdString(trace_id);
-  appendLog("trace_id: " + current_trace_id_);
+  auto start_result = engine_->start_workflow(storyText.toStdString(),
+                                              style.toStdString(), sceneCount);
+  if (start_result.is_err()) {
+    const auto &err = start_result.error();
+    setBusy(false);
+    setStatusText("Failed to start generation");
+    appendLog(QString("Failed to start workflow: %1")
+                  .arg(QString::fromStdString(err.user_message.empty()
+                                                  ? err.internal_message
+                                                  : err.user_message)));
+    emit generationCompleted(false, QString());
+    return;
+  }
 
+  current_trace_id_ = QString::fromStdString(start_result.value());
+  appendLog("trace_id: " + current_trace_id_);
   tick_timer_->start();
 }
 

@@ -11,6 +11,35 @@
 
 namespace stv::core {
 
+class ILogger;
+
+/// Scheduler resource budget (M3).
+/// CPU is a hard gate; RAM/VRAM are soft gates.
+struct ResourceBudget {
+  int cpu_slots_hard = 0; // 0 = auto (equal to worker_count)
+  int ram_soft_mb = 2048;
+  int vram_soft_mb = 7680;
+};
+
+/// Priority aging policy for anti-starvation (M3).
+struct AgingPolicy {
+  int interval_ms = 500;
+  int boost_per_interval = 1;
+};
+
+/// Pause policy for cooperative pause checkpoints (M3).
+struct PausePolicy {
+  int checkpoint_timeout_ms = 1500;
+};
+
+/// Scheduler runtime configuration (M3).
+struct SchedulerConfig {
+  int worker_count = 0; // 0 = auto: clamp((hw_threads - 1), 2, 8)
+  ResourceBudget resource_budget{};
+  AgingPolicy aging_policy{};
+  PausePolicy pause_policy{};
+};
+
 /// Scheduler interface — manages task lifecycle and dispatch.
 ///
 /// Design rationale (interview talking point):
@@ -29,7 +58,8 @@ public:
 
   /// Submit a task with its associated stage for execution.
   /// The scheduler owns the task lifecycle from this point.
-  virtual void submit(TaskDescriptor task, std::shared_ptr<IStage> stage) = 0;
+  virtual Result<void, TaskError> submit(
+      TaskDescriptor task, std::shared_ptr<IStage> stage) = 0;
 
   /// Request cancellation of a task.
   virtual Result<void, TaskError> cancel(const std::string &task_id) = 0;
@@ -56,5 +86,13 @@ public:
   /// Check if there are any non-terminal tasks.
   [[nodiscard]] virtual bool has_pending_tasks() const = 0;
 };
+
+/// M1 scheduler: single-threaded tick-based fallback implementation.
+std::unique_ptr<IScheduler> create_simple_scheduler();
+
+/// M3 scheduler: thread-pool + DAG + budget-aware dispatch.
+std::unique_ptr<IScheduler>
+create_thread_pool_scheduler(const SchedulerConfig &config,
+                             std::shared_ptr<ILogger> logger);
 
 } // namespace stv::core

@@ -43,6 +43,14 @@ enum class TaskType {
 
 const char *to_string(TaskType type);
 
+// ---- Task Resource Demand (M3) ----
+
+struct ResourceDemand {
+  int cpu_slots = 1;
+  int ram_mb = 256;
+  int vram_mb = 0;
+};
+
 // ---- Task Descriptor ----
 
 /// Core data structure representing a single task in the system.
@@ -54,6 +62,7 @@ struct TaskDescriptor {
   TaskState state = TaskState::Queued;
   int priority = 0;
   float progress = 0.0f; // [0.0, 1.0]
+  ResourceDemand resource_demand{};
 
   // Dependency management
   std::vector<std::string> deps; // Prerequisite task IDs
@@ -68,15 +77,16 @@ struct TaskDescriptor {
   // Error and cancellation
   std::optional<TaskError> error;
   std::shared_ptr<CancelToken> cancel_token;
+  std::optional<TaskState> paused_from;
 
   // ---- State Machine ----
 
   /// Attempt a state transition. Returns Err if the transition is illegal.
   /// Legal transitions:
-  ///   Queued  → Ready, Canceled
-  ///   Ready   → Running, Canceled
+  ///   Queued  → Ready, Paused, Canceled
+  ///   Ready   → Running, Paused, Canceled
   ///   Running → Paused, Succeeded, Failed, Canceled
-  ///   Paused  → Running, Canceled
+  ///   Paused  → Queued, Ready, Running, Canceled
   ///   Failed  → Queued  (retry)
   Result<void, TaskError> transition_to(TaskState new_state);
 

@@ -33,10 +33,20 @@ void WorkflowEngine::set_stage_factory(StageFactory factory) {
   stage_factory_ = std::move(factory);
 }
 
-std::string WorkflowEngine::start_workflow(const std::string & /*story_text*/,
-                                           const std::string &style,
-                                           int scene_count) {
+Result<std::string, TaskError>
+WorkflowEngine::start_workflow(const std::string & /*story_text*/,
+                               const std::string &style, int scene_count) {
   std::string trace_id = generate_uuid();
+
+  if (!stage_factory_) {
+    return Result<std::string, TaskError>::Err(
+        TaskError::Internal("Stage factory is not configured"));
+  }
+
+  if (scene_count <= 0) {
+    return Result<std::string, TaskError>::Err(
+        TaskError::Internal("scene_count must be > 0"));
+  }
 
   if (logger_) {
     logger_->info(trace_id, "orchestrator", "workflow_start",
@@ -49,6 +59,28 @@ std::string WorkflowEngine::start_workflow(const std::string & /*story_text*/,
 
   WorkflowState wf;
   wf.trace_id = trace_id;
+  wf.total = 0;
+
+  auto rollback_submitted = [&wf, this]() {
+    for (const auto &task_id : wf.task_ids) {
+      (void)scheduler_->cancel(task_id); // Best-effort rollback
+    }
+  };
+
+  auto submit_task = [this, &rollback_submitted, &trace_id](
+                         TaskDescriptor task, std::shared_ptr<IStage> stage)
+      -> Result<void, TaskError> {
+    auto submit_result = scheduler_->submit(std::move(task), std::move(stage));
+    if (submit_result.is_err()) {
+      if (logger_) {
+        logger_->error(trace_id, "orchestrator", "submit_failed",
+                       submit_result.error().internal_message);
+      }
+      rollback_submitted();
+      return Result<void, TaskError>::Err(submit_result.error());
+    }
+    return Result<void, TaskError>::Ok();
+  };
 
   // ---- Task 1: Storyboard Generation ----
   TaskDescriptor storyboard_task;
@@ -59,9 +91,14 @@ std::string WorkflowEngine::start_workflow(const std::string & /*story_text*/,
   storyboard_task.cancel_token = workflow_cancel;
   // No deps — starts immediately
   wf.task_ids.push_back(storyboard_task.task_id);
+  wf.total++;
 
   auto storyboard_stage = stage_factory_(TaskType::Storyboard);
-  scheduler_->submit(std::move(storyboard_task), storyboard_stage);
+  auto storyboard_submit =
+      submit_task(std::move(storyboard_task), storyboard_stage);
+  if (storyboard_submit.is_err()) {
+    return Result<std::string, TaskError>::Err(storyboard_submit.error());
+  }
 
   // ---- Tasks 2..N+1: Image Generation (one per scene) ----
   std::vector<std::string> image_task_ids;
@@ -76,9 +113,13 @@ std::string WorkflowEngine::start_workflow(const std::string & /*story_text*/,
 
     image_task_ids.push_back(img_task.task_id);
     wf.task_ids.push_back(img_task.task_id);
+    wf.total++;
 
     auto img_stage = stage_factory_(TaskType::ImageGen);
-    scheduler_->submit(std::move(img_task), img_stage);
+    auto img_submit = submit_task(std::move(img_task), img_stage);
+    if (img_submit.is_err()) {
+      return Result<std::string, TaskError>::Err(img_submit.error());
+    }
   }
 
   // ---- Task N+2: Compose (depends on all image tasks) ----
@@ -91,21 +132,25 @@ std::string WorkflowEngine::start_workflow(const std::string & /*story_text*/,
   compose_task.deps = image_task_ids; // Depends on all images
 
   wf.task_ids.push_back(compose_task.task_id);
-  wf.total = static_cast<int>(wf.task_ids.size());
+  wf.total++;
 
   auto compose_stage = stage_factory_(TaskType::Compose);
-  scheduler_->submit(std::move(compose_task), compose_stage);
+  auto compose_submit = submit_task(std::move(compose_task), compose_stage);
+  if (compose_submit.is_err()) {
+    return Result<std::string, TaskError>::Err(compose_submit.error());
+  }
 
+  const int total_tasks = wf.total;
   active_workflows_.push_back(std::move(wf));
 
   if (logger_) {
     logger_->info(trace_id, "orchestrator", "workflow_created",
-                  "Tasks created: " + std::to_string(wf.total) +
+                  "Tasks created: " + std::to_string(total_tasks) +
                       " (1 storyboard + " + std::to_string(scene_count) +
                       " images + 1 compose)");
   }
 
-  return trace_id;
+  return Result<std::string, TaskError>::Ok(std::move(trace_id));
 }
 
 Result<void, TaskError>

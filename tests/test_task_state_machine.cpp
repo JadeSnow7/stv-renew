@@ -20,6 +20,18 @@ TEST(TaskStateMachine, QueuedToReady) {
   ASSERT_EQ(t.state, TaskState::Ready);
 }
 
+TEST(TaskStateMachine, QueuedToPaused) {
+  TaskDescriptor t;
+  t.task_id = "t-001a";
+  t.type = TaskType::Storyboard;
+
+  auto result = t.transition_to(TaskState::Paused);
+  ASSERT_TRUE(result.is_ok());
+  ASSERT_EQ(t.state, TaskState::Paused);
+  ASSERT_TRUE(t.paused_from.has_value());
+  ASSERT_EQ(*t.paused_from, TaskState::Queued);
+}
+
 TEST(TaskStateMachine, ReadyToRunning) {
   TaskDescriptor t;
   t.task_id = "t-002";
@@ -30,6 +42,19 @@ TEST(TaskStateMachine, ReadyToRunning) {
   ASSERT_TRUE(result.is_ok());
   ASSERT_EQ(t.state, TaskState::Running);
   ASSERT_TRUE(t.started_at.has_value());
+}
+
+TEST(TaskStateMachine, ReadyToPaused) {
+  TaskDescriptor t;
+  t.task_id = "t-002a";
+  t.type = TaskType::ImageGen;
+  t.transition_to(TaskState::Ready);
+
+  auto result = t.transition_to(TaskState::Paused);
+  ASSERT_TRUE(result.is_ok());
+  ASSERT_EQ(t.state, TaskState::Paused);
+  ASSERT_TRUE(t.paused_from.has_value());
+  ASSERT_EQ(*t.paused_from, TaskState::Ready);
 }
 
 TEST(TaskStateMachine, RunningToSucceeded) {
@@ -82,6 +107,32 @@ TEST(TaskStateMachine, PausedToRunning) {
   auto result = t.transition_to(TaskState::Running);
   ASSERT_TRUE(result.is_ok());
   ASSERT_EQ(t.state, TaskState::Running);
+  ASSERT_FALSE(t.paused_from.has_value());
+}
+
+TEST(TaskStateMachine, PausedToQueued) {
+  TaskDescriptor t;
+  t.task_id = "t-006a";
+  t.type = TaskType::ImageGen;
+  t.transition_to(TaskState::Paused);
+
+  auto result = t.transition_to(TaskState::Queued);
+  ASSERT_TRUE(result.is_ok());
+  ASSERT_EQ(t.state, TaskState::Queued);
+  ASSERT_FALSE(t.paused_from.has_value());
+}
+
+TEST(TaskStateMachine, PausedToReady) {
+  TaskDescriptor t;
+  t.task_id = "t-006b";
+  t.type = TaskType::ImageGen;
+  t.transition_to(TaskState::Ready);
+  t.transition_to(TaskState::Paused);
+
+  auto result = t.transition_to(TaskState::Ready);
+  ASSERT_TRUE(result.is_ok());
+  ASSERT_EQ(t.state, TaskState::Ready);
+  ASSERT_FALSE(t.paused_from.has_value());
 }
 
 TEST(TaskStateMachine, RunningToCanceled) {

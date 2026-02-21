@@ -1,5 +1,19 @@
 build/
+build-test/
 cmake-build-*/
 *.user
 *.log
 *.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local benchmark data (not checked in)
+bench.json
+bench_gpu.json
+docs/reports/m3_simple.json
+docs/reports/m3_threadpool.json
+docs/reports/m3_bench.json

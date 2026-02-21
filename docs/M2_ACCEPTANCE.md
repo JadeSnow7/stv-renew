@@ -242,10 +242,11 @@ cmake --build . -j$(nproc)
 
 ### 9.2 M3 计划
 
-- [ ] ThreadPoolScheduler（多线程调度）
-- [ ] DAG 依赖解析和并行执行
-- [ ] ResourceBudget（CPU/RAM/VRAM 管理）
-- [ ] 优先级队列与防饥饿
+- [x] ThreadPoolScheduler（多线程调度）代码已落地（默认启用，可回退 simple）
+- [x] DAG 依赖解析和并行执行（严格依赖检查 + 后继唤醒）
+- [x] ResourceBudget（CPU 硬门禁 + RAM/VRAM 软门禁 + 单任务逃逸）
+- [x] 优先级队列与防饥饿（Aging 加权）
+- [ ] M3 实机门禁压测（`scripts/bench_m3.py` 生成对比报告）
 
 ### 9.3 M4 计划
 

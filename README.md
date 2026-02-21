@@ -2,7 +2,7 @@
 
 > AI 驱动的视频生成桌面应用 - 从文本故事到最终视频的全自动工作流
 
-[![Project Status](https://img.shields.io/badge/Status-M2%20Complete-brightgreen)]()
+[![Project Status](https://img.shields.io/badge/Status-M3%20In%20Progress-yellow)]()
 [![License](https://img.shields.io/badge/License-MIT-blue)]()
 
 ---
@@ -109,6 +109,10 @@ python3 -m app.main
 
 # GPU 基线 + 30% 故障注入
 ./scripts/bench_m2.py --provider local_gpu --runs 30 --out bench_gpu.json --report docs/reports/M2_perf.md
+
+# M3 调度基准（Simple vs ThreadPool）
+./scripts/bench_m3.py --scheduler simple --runs 10 --out docs/reports/m3_simple.json --report docs/reports/M3_perf.md
+./scripts/bench_m3.py --scheduler threadpool --runs 10 --out docs/reports/m3_threadpool.json --report docs/reports/M3_perf.md
 ```
 
 ---
@@ -230,6 +234,14 @@ struct RetryPolicy {
 | `STV_GPU_SLOTS` | `1` | GPU 并发槽位 |
 | `STV_VRAM_LIMIT_GB` | `7.5` | VRAM 软限制（GB）|
 | `STV_MAX_RETRIES` | `2` | HTTP 最大重试次数 |
+| `STV_SCHEDULER` | `threadpool` | 调度器：threadpool/simple |
+| `STV_SCHED_WORKERS` | `auto` | worker 数（auto=clamp(hw-1,2,8)） |
+| `STV_SCHED_CPU_SLOTS` | `worker_count` | CPU 硬门禁并发槽 |
+| `STV_SCHED_RAM_MB_SOFT` | `2048` | RAM 软门禁（MB） |
+| `STV_SCHED_VRAM_MB_SOFT` | `7680` | VRAM 软门禁（MB） |
+| `STV_SCHED_AGING_INTERVAL_MS` | `500` | Aging 时间片（ms） |
+| `STV_SCHED_AGING_BOOST` | `1` | 每时间片优先级增益 |
+| `STV_SCHED_PAUSE_TIMEOUT_MS` | `1500` | Running pause checkpoint 超时 |
 
 ### 构建选项
 
@@ -276,9 +288,10 @@ cd build && ctest --output-on-failure
 
 ### M3（计划）: 调度升级
 
-- [ ] ThreadPoolScheduler（多线程）
-- [ ] DAG 依赖解析
-- [ ] ResourceBudget（CPU/RAM/VRAM）
+- [x] ThreadPoolScheduler（多线程）
+- [x] DAG 依赖解析
+- [x] ResourceBudget（CPU/RAM/VRAM）
+- [ ] 实机压测与门禁验收（`bench_m3.py`）
 
 ### M4（计划）: 工程加固
 

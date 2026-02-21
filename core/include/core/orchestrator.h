@@ -52,8 +52,9 @@ public:
   /// Start a new workflow.
   /// Creates: Storyboard → ImageGen×N → Compose task chain.
   /// Returns the trace_id for this workflow.
-  std::string start_workflow(const std::string &story_text,
-                             const std::string &style, int scene_count = 4);
+  Result<std::string, TaskError>
+  start_workflow(const std::string &story_text, const std::string &style,
+                 int scene_count = 4);
 
   /// Cancel an entire workflow by trace_id.
   Result<void, TaskError> cancel_workflow(const std::string &trace_id);

@@ -27,12 +27,26 @@ target_link_libraries(test_scheduler PRIVATE stv_core GTest::gtest_main)
 set_project_warnings(test_scheduler)
 gtest_discover_tests(test_scheduler)
 
+add_executable(test_thread_pool_scheduler
+    test_thread_pool_scheduler.cpp
+)
+target_link_libraries(test_thread_pool_scheduler PRIVATE stv_core GTest::gtest_main)
+set_project_warnings(test_thread_pool_scheduler)
+gtest_discover_tests(test_thread_pool_scheduler)
+
 add_executable(test_pipeline
     test_pipeline.cpp
 )
 target_link_libraries(test_pipeline PRIVATE stv_core GTest::gtest_main)
 set_project_warnings(test_pipeline)
 gtest_discover_tests(test_pipeline)
+
+add_executable(test_orchestrator
+    test_orchestrator.cpp
+)
+target_link_libraries(test_orchestrator PRIVATE stv_core GTest::gtest_main)
+set_project_warnings(test_orchestrator)
+gtest_discover_tests(test_orchestrator)
 
 add_executable(test_http_client
     http_client_test.cpp

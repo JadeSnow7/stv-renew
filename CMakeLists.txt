@@ -13,9 +13,24 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(STV_BUILD_TESTS "Build unit tests" ON)
 option(STV_BUILD_APP "Build Qt application (requires Qt6)" ON)
+option(STV_USE_SYSTEM_SPDLOG "Use system-installed spdlog package" ON)
 
 # Locked decision: spdlog is mandatory across platforms.
-find_package(spdlog REQUIRED)
+if(STV_USE_SYSTEM_SPDLOG)
+    find_package(spdlog QUIET)
+endif()
+
+if(NOT TARGET spdlog::spdlog)
+    include(FetchContent)
+    FetchContent_Declare(
+        spdlog
+        GIT_REPOSITORY https://github.com/gabime/spdlog.git
+        GIT_TAG v1.14.1
+        GIT_SHALLOW TRUE
+    )
+    FetchContent_MakeAvailable(spdlog)
+endif()
+
 if(NOT TARGET spdlog::spdlog)
     message(FATAL_ERROR "spdlog::spdlog target is required")
 endif()

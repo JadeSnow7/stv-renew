@@ -58,11 +58,12 @@ Result<void, TaskError> TaskDescriptor::transition_to(TaskState new_state) {
 
   switch (state) {
   case TaskState::Queued:
-    legal = (new_state == TaskState::Ready || new_state == TaskState::Canceled);
+    legal = (new_state == TaskState::Ready || new_state == TaskState::Paused ||
+             new_state == TaskState::Canceled);
     break;
   case TaskState::Ready:
-    legal =
-        (new_state == TaskState::Running || new_state == TaskState::Canceled);
+    legal = (new_state == TaskState::Running || new_state == TaskState::Paused ||
+             new_state == TaskState::Canceled);
     break;
   case TaskState::Running:
     legal =
@@ -70,8 +71,9 @@ Result<void, TaskError> TaskDescriptor::transition_to(TaskState new_state) {
          new_state == TaskState::Failed || new_state == TaskState::Canceled);
     break;
   case TaskState::Paused:
-    legal =
-        (new_state == TaskState::Running || new_state == TaskState::Canceled);
+    legal = (new_state == TaskState::Queued || new_state == TaskState::Ready ||
+             new_state == TaskState::Running ||
+             new_state == TaskState::Canceled);
     break;
   case TaskState::Failed:
     // Only retry transition: Failed → Queued
@@ -94,6 +96,12 @@ Result<void, TaskError> TaskDescriptor::transition_to(TaskState new_state) {
   TaskState old_state = state;
   state = new_state;
 
+  if (new_state == TaskState::Paused) {
+    paused_from = old_state;
+  } else if (old_state == TaskState::Paused) {
+    paused_from.reset();
+  }
+
   // Update lifecycle timestamps
   if (new_state == TaskState::Running && !started_at.has_value()) {
     started_at = Clock::now();
@@ -108,6 +116,7 @@ Result<void, TaskError> TaskDescriptor::transition_to(TaskState new_state) {
     error.reset();
     started_at.reset();
     finished_at.reset();
+    paused_from.reset();
   }
 
   return Result<void, TaskError>::Ok();
